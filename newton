@@ -1,0 +1,60 @@
+#!/usr/bin/perl -w
+#Program to find root of a function using Newton's method
+#Author Kranthi K. Pamarthi
+print "Enter the coefficients of function from 0 to n : \n";
+chomp (@f = <STDIN>);
+print "Enter the coefficients of derivative function from 0 to n : \n";
+chomp (@fdash = <STDIN>);
+print "Enter the first zero estimate : \n";
+chomp ($a0 = <STDIN>);
+print "Enter the error approximation : \n";
+chomp ($error = <STDIN>);
+print "Enter the maximum number of iterations : \n";
+chomp ($max = <STDIN>);
+print "Enter the limit : \n";
+chomp ($limit = <STDIN>);
+$m = 1;
+$n = @f;
+$ndash = @fdash;
+$l = $n-1;
+$ldash = $ndash-1;
+newton ();
+##############################################################
+################ Newton's Method #############################
+##############################################################
+sub newton
+{
+while ($m <= $max)
+{
+print "iteration : $m\n\n";
+print "The value of a0 is $a0\n";
+$sum = $f[$l];
+for ($i = $l-1;$i >= 0;$i--)
+{
+$sum = $f[$i] + ($sum * $a0);
+print "The value of sum upto $i coefficient is $sum\n";
+}
+print "The value of the polynomial at $a0 is $sum\n\n";
+$sumdash = $fdash[$ldash];
+for ($idash = $ldash-1;$idash >= 0;$idash--)
+{
+$sumdash = $fdash[$idash] + ($sumdash * $a0);
+print "The value of sum upto $idash coefficient is $sumdash\n";
+}
+#$horner = $sum;
+print "The value of the derivative at $a0 is $sumdash\n\n";
+if (abs($sumdash) < $limit)
+{
+    print "Derivative value too small, exit\n\n";
+    print "The root of the function is $a0\n\n";
+}
+$a1 = $a0 - ($sum/$sumdash);
+print "The value of a1 is $a1\n";
+if (abs($a1-$a0)/abs($a1) < $error)
+{
+    print "The root to the function is $a1\n\n";
+}
+$a0 = $a1;
+$m += 1;
+}
+}
