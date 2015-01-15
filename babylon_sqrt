@@ -1,0 +1,28 @@
+#!/usr/bin/perl -w
+#Program to calculate square root of a positive number using babylonians method
+#Author Kranthi K. Pamarthi
+print "Enter a positive number : \n";
+chomp ($a = <STDIN>);
+print "Enter approcimation error : \n";
+chomp ($error = <STDIN>);
+$n = 0;
+babylon_sqrt ();
+#############################################################
+######### Babylonians square root function ##################
+#############################################################
+sub babylon_sqrt
+{
+$root = $a;
+if ($root - $a/$root >= 0)
+{
+while ($root - $a/$root > $error)
+{
+$root = (($root + $a/$root)/2);
+$n += 1;
+print "iteration : $n\n";
+print "The approximate square root at iteration $n is : $root \n";
+}
+}
+print "The total number of iterations are : $n\n\n";
+print "The approximate square root of $a is $root \n\n";
+}
