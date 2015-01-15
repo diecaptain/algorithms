@@ -1,0 +1,41 @@
+#!/usr/bin/perl -w
+# program to calculate the powers of a number using Pingala recurrence formula
+# Author Kranthi K. Pamarthi
+print "Enter the base number: \n";
+chomp ($a = <STDIN>);
+print "Enter the exponent number : \n";
+chomp ($b = <STDIN>);
+$n = 0;
+Pingala ();
+################################################
+######## Pingala Recurrence Function ###########
+################################################
+sub Pingala
+{
+    $binary = sprintf("%b", $b);
+    @bits = split(//,$binary);
+    print "The binary representation of $b is @bits\n";
+    $h = @bits-1;
+    for ($c = 0;$c < $h;$c++)
+    {
+    $array[$c] = $bits[$c+1];
+    }
+    print "The binary values considered are @array\n";
+$power = $a;
+foreach $i (@array)
+{
+    $n = $n+1;
+print "iteration : $n \n";
+    if ($i == 0)
+{
+    $power = $power * $power;
+}
+else
+{
+$power = $a * $power * $power
+}
+print "The product at iteration $n is $power\n";
+}
+print "Total number of iterations are $n\n\n";
+print "The final value is $power\n\n";
+}
