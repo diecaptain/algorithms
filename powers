@@ -1,0 +1,25 @@
+#!/usr/bin/perl -w
+# program to calculate the powers of a number naively
+# Author Kranthi K. Pamarthi
+print "Enter the base number: \n";
+chomp ($a = <STDIN>);
+print "Enter the exponent number : \n";
+chomp ($b = <STDIN>);
+Naivepowers ();
+################################################
+############# Naive Powers Function ############
+################################################
+sub Naivepowers
+{
+$product = $a;
+for ($i = 0; $i <= $b-1 ; $i++)
+{
+    $n = $i+1;
+print "iteration : $n \n";
+$product = $product * $a;
+print "The product at iteration $n is $product\n";
+}
+$h = $i+1;
+print "Total number of iterations are $h\n\n";
+print "The final value is $product\n\n";
+}
