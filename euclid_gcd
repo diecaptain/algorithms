@@ -1,0 +1,29 @@
+#!/usr/bin/perl -w
+#Program to calculate GCD using Euclid algorithm 
+#Author Kranthi K. Pamarthi
+print "Enter the first number : \n";
+chomp ($a = <STDIN>);
+print "Enter the second number : \n";
+chomp ($b = <STDIN>);
+$c = $a;
+$d = $b;
+$i = 0;
+EuclidGCD ();
+############################################
+######### Function Code ###################
+###########################################
+sub EuclidGCD
+{
+while ($b != 0)
+{
+    print "iteration $i : \n";
+    $r = $a % $b;
+    $a = $b;
+    $b = $r;
+    print "The numbers now are $a and $b\n";
+    $i += 1;
+}
+print "The total number of iterations are $i\n\n";
+print "The GCD of $c and $d is $a\n\n";
+}
+
