@@ -1,0 +1,111 @@
+#!/usr/bin/perl -w
+#Program to find root using bisecting method
+#Author Kranthi K. Pamarthi
+print "Enter the coefficients of function from o to n : \n";
+chomp (@f = <STDIN>);
+print "Enter the lower bound of interval : \n";
+chomp ($a = <STDIN>);
+print "Enter the upper bound of interval : \n";
+chomp ($b = <STDIN>);
+print "Enter the error approximation : \n";
+chomp ($error = <STDIN>);
+print "Enter the maximum number of iterations : \n";
+chomp ($max = <STDIN>);
+$m = 1;
+$n = @f;
+$l = $n-1;
+#$horner = 0;
+#$horner1 = 0;
+bisec ();
+#########################################################
+############## Horner evaluation for c ##################
+#########################################################
+#sub horner_eval
+#{
+#$sum = $f[$l];
+#for ($i = $l-1;$i >= 0;$i--)
+#{
+#$sum = $f[$i] + ($sum * $c);
+#print "The value of sum upto $i coefficient is $sum\n";
+#}
+#$horner = $sum;
+#print "The value of the polynomial at $c is $horner\n\n";
+#}
+#########################################################
+############## Horner evaluation for a ##################
+#########################################################
+#sub horner_eval1
+#{
+#$sum1 = $f[$l];
+#for ($i = $l-1;$i >= 0;$i--)
+#{
+#$sum1 = $f[$i] + ($sum1 * $a);
+#print "The value of sum upto $i coefficient is $sum1\n";
+#}
+#$horner1 = $sum1;
+#print "The value of the polynomial at $a is $horner1\n\n";
+#}
+#########################################################
+############## Horner evaluation for b ##################
+#########################################################
+#sub horner_eval2
+#{
+#$sum2 = $f[$l];
+#for ($i = $l-1;$i >= 0;$i--)
+#{
+#$sum2 = $f[$i] + ($sum2 * $b);
+#print "The value of sum upto $i coefficient is $sum2\n";
+#}
+#print "The value of the polynomial at $b is $sum2\n\n";
+#}
+#########################################################
+############## Bisection Method #########################
+#########################################################
+sub bisec
+{
+while ($m <= $max)
+{
+print "iteration : $m\n\n";
+$c = (($a+$b)/2);
+print "the value of point c is $c\n";
+#horner_eval ();
+$sum = $f[$l];
+for ($i = $l-1;$i >= 0;$i--)
+{
+$sum = $f[$i] + ($sum * $c);
+print "The value of sum upto $i coefficient is $sum\n";
+}
+#$horner = $sum;
+print "The value of the polynomial at $c is $sum\n\n";
+if ($sum == 0 || ($b-$a)/2 < $error)
+{
+print "The root of function f is : $c\n\n";
+}
+$m += 1;
+print "the value of point a is $a\n";
+#horner_eval1 ();
+#horner_eval2 ();
+$sum1 = $f[$l];
+for ($i = $l-1;$i >= 0;$i--)
+{
+$sum1 = $f[$i] + ($sum1 * $a);
+print "The value of sum upto $i coefficient is $sum1\n";
+}
+#$horner1 = $sum1;
+print "The value of the polynomial at $a is $sum1\n\n";
+$product = ($sum1 * $sum);
+print "The product is $product \n\n";
+if ($product >= 0)
+{
+    $a = $c;
+    print "the new value of point a is $a\n";
+    print "the new value of point b is $b\n\n";
+}
+else
+{
+    $b = $c;
+    print "the new value of point a is $a\n";
+    print "the new value of point b is $b\n\n";
+}
+}
+}
