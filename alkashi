@@ -1,0 +1,42 @@
+#!/usr/bin/perl -w
+# program to calculate the powers of a number using Alkashi recurrence formula
+# Author Kranthi K. Pamarthi
+print "Enter the base number: \n";
+chomp ($a = <STDIN>);
+print "Enter the exponent number : \n";
+chomp ($b = <STDIN>);
+$n = 0;
+Alkashi ();
+################################################
+######## Alkashi Recurrence Function ###########
+################################################
+sub Alkashi
+{
+    $binary = sprintf("%b", $b);
+    @bits = split(//,$binary);
+    print "The binary representation of $b is @bits\n";
+    $h = @bits-1;
+    for ($c = 0;$c < $h;$c++)
+    {
+    $array[$c] = $bits[$c+1];
+    }
+    print "The omitted array is @array\n";
+    @reversed = reverse(@array);
+    print "The binary values considered are @reversed\n";
+    $power = $a;
+    $accum = 1;
+foreach $i (@reversed)
+{
+    $n = $n+1;
+print "iteration : $n \n";
+    if ($i == 1)
+{
+    $accum = $power * $accum;
+}
+$power = $power * $power;
+$product = $power * $accum;
+print "The product at iteration $n is $product\n";
+}
+print "Total number of iterations are $n\n\n";
+print "The final value is $product\n\n";
+}
