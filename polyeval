@@ -1,0 +1,24 @@
+#!/usr/bin/perl -w
+#Program to evaluate polynomials at some real value v
+#Author Kranthi K. Pamarthi
+print "Enter the array of coefficients from 0 to n: \n";
+chomp (@a = <STDIN>);
+print "Enter the value to be evaluated : \n";
+chomp ($v = <STDIN>);
+$n = @a;
+polyeval ();
+##################################################
+############# Polynomial Evaluation ##############
+##################################################
+sub polyeval
+{
+$sum = $a[0];
+$product = 1;
+for ($i = 1;$i < $n;$i++)
+{
+$product *= $v;
+$sum += $a[$i]*$product;
+print "The value of sum upto $i coefficient is $sum\n";
+}
+print "The value of the polynomial at $v is $sum\n\n";
+}
