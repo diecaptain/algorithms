@@ -1,0 +1,23 @@
+#!/usr/bin/perl -w
+#Program to evaluate polynomials at some real value v using Horner's rule
+#Author Kranthi K. Pamarthi
+print "Enter the array of coefficients from 0 to n: \n";
+chomp (@a = <STDIN>);
+print "Enter the value to be evaluated : \n";
+chomp ($v = <STDIN>);
+$n = @a;
+$l = $n-1;
+horner_eval ();
+##################################################
+####### Horner Polynomial Evaluation #############
+##################################################
+sub horner_eval
+{
+$sum = $a[$l];
+for ($i = $l-1;$i >= 0;$i--)
+{
+$sum = $a[$i] + ($sum * $v);
+print "The value of sum upto $i coefficient is $sum\n";
+}
+print "The value of the polynomial at $v is $sum\n\n";
+}
