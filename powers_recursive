@@ -1,0 +1,52 @@
+#!/usr/bin/perl -w
+#Program to calculate power of a number using recursion
+#Author Kranthi K. Pamarthi
+print "Enter the base number : \n";
+chomp ($x = <STDIN>);
+print "Enter the power : \n";
+chomp ($v = <STDIN>);
+#$n = 1;
+$pow = powers_recursive ($x,$v);
+print "The value of power is $pow\n\n";
+###########################################################
+########## Powers using recursion #########################
+###########################################################
+sub powers_recursive
+{
+ #print "iteration : $n\n\n";
+ if ($v == 1)
+  {
+   $pow = $x;
+   #print "The value of power is $pow\n\n";
+   }
+ elsif ($v > 1)
+ {
+ if ($v % 2 == 0)
+     {
+      $x = $x*$x;
+      $v = $v/2;
+      $pow = powers_recursive ($x,$v);
+      #print "The value of power at iteration $n is $pow\n";
+     }
+ else
+    {
+        #$i = 0;
+	#$n[$i] = $x;
+        $n = $x;
+        $x = $x*$x;
+        $v = ($v-1)/2;
+        $pow = $n*powers_recursive ($x,$v);
+        #$pow = $n*$temp;
+        #$i += 1;
+     #print "The value of power at iteration $n is $pow\n";
+     }
+ }
+      #$n += 1;
+      #foreach $j (@n)
+      #{
+	  #$pow *= $j;
+      #}
+      #print "The value of power is $pow\n\n";
+ return $pow;
+      }
+       
