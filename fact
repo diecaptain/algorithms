@@ -1,0 +1,24 @@
+#!/usr/bin/perl -w
+#Program to find factorial of a number recursively
+#Author Kranthi K. Pamarthi
+print "Enter the number : \n";
+chomp ($x = <STDIN>);
+#$n = $x;
+$f = fact($x);
+print "The value of factorial of $x is $f\n\n";
+#####################################################
+############### factorial function ##################
+#####################################################
+sub fact
+{
+    my $var = shift;
+ if ($var <= 1)
+  {
+      return 1;
+   }
+   else
+      {
+       $f = $var * fact($var-1);
+       }
+       return $f;
+       }
