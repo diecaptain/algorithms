@@ -1,0 +1,41 @@
+#!/usr/bin/perl -w
+#Program to perform linear search
+#Author Kranthi K. Pamarthi
+print "Enter the array of numbers : \n";
+chomp (@num = <STDIN>);
+$len = @num;
+linear_search ();
+#################################################################
+################# Linear Search #################################
+#################################################################
+sub linear_search
+{
+ print "Enter the number to be found : \n";
+ chomp ($x = <STDIN>);
+ for ($i=0;$i<$len;$i++)
+   {
+   $j = $i+1;
+    if ($x == $num[$i])
+     {
+      print "iteration number : $j\n";
+      print "The number $x is found at position $j of list\n\n";
+      retun $i;
+      }
+       }#if ($i == $len-1 && $x != $num[$i])
+        # {
+          print "The number $x is not in the list\n\n";
+	 #}
+   #}
+ return $i;
+#     print "Search for another number? (Y/N) : \n";
+#     chomp ($choice = <STDIN>);
+#     $choice =~ tr/A-Z/a-z/;
+#     if ($choice == y)
+#      {
+#       linear_search (@num);
+#        }
+#        else
+#           {
+#            print "The program exits yo, see ya!!\n\n";
+#	   }
+}
