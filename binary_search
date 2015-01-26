@@ -1,0 +1,59 @@
+#!/usr/bin/perl -w
+#Program to perform binary search of an array or a list
+#Author Kranthi K. Pamarthi
+#use Switch;
+print "Enter the list of numbers : \n";
+chomp (@num = <STDIN>);
+$len = @num;
+@scan = sort {$a <=> $b} @num;
+$l_b = 0;
+$h_b = $#scan;
+$n = 0;
+print "Enter the number to be searched : \n";
+chomp ($x = <STDIN>);
+binary_search(@scan,$l_b,$h_b,$x);
+###############################################
+############ Binary Search ####################
+###############################################
+sub binary_search
+{
+ $low = 0;
+ $high = $#scan;
+ $n += 1; 
+    print "iteration : $n\n";
+ if ($l_b > $h_b)
+  {
+      print "The number $x doesnt exist in the list\n\n";
+      return $x;
+  }
+   $mid = int(($low+$high)/2);
+   $m_b = int(($l_b+$h_b)/2);
+   print "Mid value of $low and $high is $mid\n"; 
+   #switch ($mid)
+   #{
+    if ($x == $scan[$mid])
+    {
+	print "The number $x is found at position $m_b in the list\n\n";
+        return $m_b;
+    }
+     elsif ($x < $scan[$mid])
+     {
+	 print "The number $x is to the left of $mid position in the list\n";
+         $l_b = 0;
+         $h_b = $m_b-1;
+         @scan = @scan[$l_b..$h_b];
+         print "low is now $l_b, high is now $h_b\n";
+         print "the new list is @scan\n";
+         return binary_search(@scan,$l_b,$h_b,$x);
+     }
+      else
+      {
+	  print "The number $x is to the right of $mid position in the list\n";
+          $l_b = $m_b+1;
+          $h_b = $high;
+          @scan = @scan[$l_b..$h_b];
+          print "low is now $l_b, high is now $h_b\n";
+          print "the new list is @scan\n";
+          return binary_search(@scan,$l_b,$h_b,$x);
+      }
+}
