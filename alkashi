@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 # program to calculate the powers of a number using Alkashi recurrence formula
+# Blah blah blah
 # Author Kranthi K. Pamarthi
 print "Enter the base number: \n";
 chomp ($a = <STDIN>);
